@@ -24,7 +24,7 @@ class App extends Component {
 
         <main>
           <Nominees/>
-          <SearchResults/>
+          <SearchResults movieTitle={this.state.movieTitle}/>
         </main>
         
         <Footer/>
