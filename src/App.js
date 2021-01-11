@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Header from './Header.js';
 import SearchResults from './SearchResults.js';
-import RemoveNominees from './RemoveNominees.js';
+import Nominees from './Nominees.js';
 import Footer from './Footer.js';
 import './sass/App.scss';
 
@@ -10,10 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
+
         <main>
-          <RemoveNominees/>
+          <Nominees/>
           <SearchResults/>
         </main>
+        
         <Footer/>
       </div>
     )
