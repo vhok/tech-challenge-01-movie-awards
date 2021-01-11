@@ -1,11 +1,27 @@
 import { Component } from 'react';
+import axios from 'axios';
 // import firebase from './firebase';
 
 class SearchResults extends Component {
+    constructor() {
+        super();
+        this.state = {
+            movieList: '',
+            moviePosters: ''
+        }
+    }
 
-    getMovies(movieQuery) {
-        console.log(movieQuery[0]);
-        
+    componentDidUpdate() {
+        axios({
+            method: 'GET',
+            url: `http://www.omdbapi.com/?apikey=9d866534`,
+            responseType: 'json',
+            params: {
+                s: `${this.props.movieTitle}`
+            }
+        }).then((response) => {
+            console.log(response);
+        });
     }
 
     render() {
@@ -13,7 +29,6 @@ class SearchResults extends Component {
         // dbRef.on('value', (response) => {
         //     console.log(response.val());
         // });
-        this.getMovies(this.props.movieTitle);
 
         return (
             <div className="SearchResults">
