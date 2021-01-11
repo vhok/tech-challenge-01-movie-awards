@@ -1,12 +1,20 @@
+import { useState } from 'react';
 // import axios from 'axios';
 
 
 const Header = () => {
+    const [movieTitle, setMovieTitle] = useState('');
+
     const handleSearch = (event) => {
         event.preventDefault();
-        // console.log("HI THIS IS A TEST");
+        console.log(movieTitle);
     }
     
+    const handleChange = (event) => {
+        event.preventDefault();
+        setMovieTitle([event.target.value]);
+    }
+
     return (
         <header>
             <div className="wrapper">
@@ -17,7 +25,7 @@ const Header = () => {
                         <h2>Search for your nominees 📽️🏆</h2>
                         <form onSubmit={handleSearch}>
                             <label htmlFor="search">Movie title: </label>
-                            <input type="text" id="search"/>
+                            <input type="text" id="search" onChange={handleChange}/>
                             <button type="submit" id="submit">Search</button>
                         </form>
                     </div>
