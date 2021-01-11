@@ -2,12 +2,12 @@ import { useState } from 'react';
 // import axios from 'axios';
 
 
-const Header = () => {
+const Header = (props) => {
     const [movieTitle, setMovieTitle] = useState('');
 
     const handleSearch = (event) => {
         event.preventDefault();
-        console.log(movieTitle);
+        props.callbackFromApp(movieTitle);
     }
     
     const handleChange = (event) => {

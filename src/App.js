@@ -6,10 +6,21 @@ import Footer from './Footer.js';
 import './sass/App.scss';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      movieTitle: ''
+    }
+  }
+
+  getMovieTitle = (movieQuery) => {
+    this.setState({movieTitle: movieQuery});
+  }
+
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header callbackFromApp={this.getMovieTitle}/>
 
         <main>
           <Nominees/>
