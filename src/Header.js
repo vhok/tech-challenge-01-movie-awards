@@ -2,7 +2,7 @@ const Header = () => {
     return (
         <header>
             <div className="wrapper">
-                <h1>The Shoppies: Movie awards for entrepreneurs.</h1>
+                <h1><em>The Shoppies</em>: Movie awards for entrepreneurs.</h1>
 
                 <div className="header__div-container">
                     <div className="header__div-search">

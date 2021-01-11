@@ -44,6 +44,22 @@ header {
     }
 }
 
+// Forms
+input, button {
+    margin: 5px;
+    padding: 10px 20px;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+button {
+    border-radius: 5px;
+    background-color: #008060;
+}
+
 // ==================== MAIN ====================
 
 .Nominees {

@@ -1,6 +1,15 @@
+
+h1, h2, p, a, button {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 header {
     h2, p {
         color: #004C3F
+    }
+
+    button {
+        color: #fff;
     }
 }
 
@@ -17,6 +26,7 @@ footer {
         border-radius: 7px;
         padding: 0 5px;
         color: #fff;
+        font-weight: 700;
     }
 
     p {
