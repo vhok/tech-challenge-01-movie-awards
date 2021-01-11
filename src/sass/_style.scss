@@ -65,10 +65,30 @@ button {
 .Nominees {
     height: 80px;
     background-color: #004C3F;    
-
 }
 
 .SearchResults {
+    padding: 50px 0;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        li {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            width: 200px;
+            flex-grow: 1;
+        }
+
+        div {
+            height: 350px;
+        }
+    }
 
 }
 
