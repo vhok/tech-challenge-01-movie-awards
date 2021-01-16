@@ -70,8 +70,32 @@ button {
 // ==================== MAIN ====================
 
 .Nominees {
-    height: 80px;
-    background-color: #004C3F;    
+    min-height: 600px;
+    background-color: #004C3F;
+    
+    ul {
+        display: flex;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            margin-right: 25px;
+        }
+
+        div {
+            height: 350px;
+        }
+
+        img {
+            width: auto;
+        }
+    }
+
+    h2 {
+        text-align: center;
+        flex-grow: 1;
+        margin-bottom: 25px;
+    }
 }
 
 .SearchResults {

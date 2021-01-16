@@ -19,18 +19,21 @@ class SearchResults extends Component {
                 <div>
                     <img src={movie.Poster} alt={`movie poster of ${movie.Title}`}/>
                 </div>
-                    <button id={movie.imdbID} onClick={this.handleAddNominee}>Nominate</button>
+                    <button id={movie.imdbID} onClick={ (event) => {this.handleAddNominee(event)}}>Nominate</button>
             </li>
             );
         });
     }
 
     handleAddNominee(event) {
-        console.log(event.target.id);
+        const dbRef = firebase.database().ref('nominations/' + event.target.id);
+        const movieToNominate = this.state.movieList.filter( (movie) => { return movie.imdbID === event.target.id })[0];
+
+        dbRef.set(movieToNominate);
     }
 
     componentDidMount() {
-        const dbRef = firebase.database().ref('resultsMovie');
+        const dbRef = firebase.database().ref('searchResults');
 
         dbRef.on('value', (response) => {
             if (response.val()) {
@@ -52,7 +55,7 @@ class SearchResults extends Component {
             }
         }).then((response) => {
             if(prevState.movieList === this.state.movieList) {
-                const dbRef = firebase.database().ref('resultsMovie');
+                const dbRef = firebase.database().ref('searchResults');
 
                 dbRef.set({movieData: response.data.Search});
             }
@@ -65,7 +68,6 @@ class SearchResults extends Component {
         return (
             <div className="SearchResults">
                 <div className="wrapper">
-                    <h2>Potential Nominees:</h2>
                     <ul>
                         {this.displayMovies(this.state.movieList)}
                     </ul>
