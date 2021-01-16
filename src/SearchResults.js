@@ -1,12 +1,15 @@
 import { Component } from 'react';
 import axios from 'axios';
 import firebase from './firebase';
+import noImage from './assets/noImage.png';
 
 class SearchResults extends Component {
     constructor() {
         super();
         this.state = {
-            movieList: []
+            movieList: [],
+            isNominationsMaxed: false,
+            isResults: true
         }
     }
 
@@ -18,15 +21,28 @@ class SearchResults extends Component {
     }
 
     componentDidMount() {
-        const dbRef = firebase.database().ref('searchResults');
+        const dbRef = firebase.database().ref();
 
         dbRef.on('value', (response) => {
-            if (response.val()) {
-                this.setState({
-                    movieList: response.val().movieData
-                });
+            let movies = [];
+            let maxed = false;
+
+            if(response.val()['searchResults']) {
+                movies = response.val()['searchResults'].movieData;
+
             }
+            
+            if(response.val()['nominations'] && Object.keys(response.val()['nominations']).length >= 5 ) {
+                maxed = true;
+            }
+
+            this.setState({
+                movieList: movies,
+                isNominationsMaxed: maxed
+            });
         });
+
+
     }
 
     componentDidUpdate(prevProp, prevState) {
@@ -55,9 +71,9 @@ class SearchResults extends Component {
                     <h2>{movie.Title}</h2>
                     <h3>{movie.Year}</h3>
                     <div>
-                        <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
+                        <img src={movie.Poster !== "N/A" ? movie.Poster : noImage } alt={`movie poster of ${movie.Title}`} />
                     </div>
-                    <button id={movie.imdbID} onClick={(event) => { this.handleAddNominee(event) }}>Nominate</button>
+                    <button id={movie.imdbID} onClick={(event) => { this.handleAddNominee(event) }} disabled={this.state.isNominationsMaxed}>Nominate</button>
                 </li>
             );
         });

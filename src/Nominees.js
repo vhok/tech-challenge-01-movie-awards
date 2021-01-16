@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import firebase from './firebase';
+import noImage from './assets/noImage.png';
 
 const Nominees = () => {
     const [nominations, setNominations] = useState([]);
@@ -35,7 +36,7 @@ const Nominees = () => {
                     <h2>{nominee.Title}</h2>
                     <h3>{nominee.Year}</h3>
                     <div className={nominations.length >= 5 ? "Nominees__div-img--selected" : null}>
-                        <img src={nominee.Poster} alt={`movie poster of ${nominee.Title}`} />
+                        <img src={nominee.Poster !== "N/A" ? nominee.Poster : noImage} alt={`movie poster of ${nominee.Title}`} />
                     </div>
                     <button id={`nominee_${nominee.imdbID}`} onClick={handleRemove} >Remove</button>
                 </li>
@@ -45,7 +46,7 @@ const Nominees = () => {
     
     return (
         <div className="Nominees">
-            <div className="wrapper" className={nominations.length >= 5 ? "Nominees__div-wrapper--selected" : null}>
+            <div className={`wrapper ${nominations.length >= 5 ? "Nominees__div-wrapper--selected" : null}`} >
                 <h2 className={ nominations.length >= 5 ? "Nominees__h2-banner--selected" : null} >Nominees:</h2>
                 <ul>
                     {displayNominations()}
