@@ -37,6 +37,13 @@ header {
 
     .header__div-search {
         width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h2{ 
+        margin-bottom: 20px;
     }
 
     .header__div-img-banner {
@@ -87,6 +94,10 @@ button {
 
         div {
             height: 350px;
+        }
+
+        img {
+            width: auto;
         }
     }
 

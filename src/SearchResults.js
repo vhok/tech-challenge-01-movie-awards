@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
-// import firebase from './firebase';
+import firebase from './firebase';
 
 class SearchResults extends Component {
     constructor() {
@@ -15,6 +15,7 @@ class SearchResults extends Component {
             return (
             <li key={movie.imdbID}>
                 <h2>{movie.Title}</h2>
+                <h3>{movie.Year}</h3>
                 <div>
                     <img src={movie.Poster} alt={`movie poster of ${movie.Title}`}/>
                 </div>
@@ -24,6 +25,17 @@ class SearchResults extends Component {
         });
     }
 
+    componentDidMount() {
+        const dbRef = firebase.database().ref();
+
+        dbRef.on('value', (response) => {
+            this.setState({
+                movieList: response.val().movieData
+            });
+        });
+    }
+
+    componentDid
     componentDidUpdate(prevProp, prevState) {
         axios({
             method: 'GET',
@@ -31,15 +43,12 @@ class SearchResults extends Component {
             responseType: 'json',
             params: {
                 s: `${this.props.movieTitle}`,
-                /**
-                 * NOTE: This API shows 10 results per page and doesn't allow one to request all results at once. 
-                 */
             }
         }).then((response) => {
             if(prevState.movieList === this.state.movieList) {
-                this.setState({
-                    movieList: response.data.Search
-                });
+                const dbRef = firebase.database().ref();
+
+                dbRef.set({movieData: response.data.Search});
             }
         }).catch( (error) => {
             console.log("Temporary console error message no results.");
@@ -47,11 +56,6 @@ class SearchResults extends Component {
     }
 
     render() {
-        // const dbRef = firebase.database().ref();
-        // dbRef.on('value', (response) => {
-        //     console.log(response.val());
-        // });
-
         return (
             <div className="SearchResults">
                 <div className="wrapper">
