@@ -8,7 +8,6 @@ const Nominees = () => {
         const dbRef = firebase.database().ref('nominations');
 
         dbRef.on('value', (response) => {
-            console.log(Object.keys(response.val()).length);
             const currentNominations = [];
 
             for(let nominee in response.val()) {
@@ -20,16 +19,25 @@ const Nominees = () => {
         
     }, []);
 
+    const handleRemove = (event) => {
+        const dbRef = firebase.database().ref('nominations');
+
+        // // to remove the first portion 'nominee_' so that movieID can be used directly to reference database record.
+        const movieID = event.target.id.slice(8);
+
+        dbRef.child(movieID).remove();
+    }
+
     const displayNominations = () => {
         return  nominations.map( (nominee) => {
             return (
-                <li>
+                <li key={`nominee_${nominee.imdbID}`}>
                     <h2>{nominee.Title}</h2>
                     <h3>{nominee.Year}</h3>
-                    <div>
+                    <div className={nominations.length >= 5 ? "Nominees__div-img--selected" : null}>
                         <img src={nominee.Poster} alt={`movie poster of ${nominee.Title}`} />
                     </div>
-                    <button id={nominee.imdbID} >Remove</button>
+                    <button id={`nominee_${nominee.imdbID}`} onClick={handleRemove} >Remove</button>
                 </li>
             );
         })
@@ -37,8 +45,8 @@ const Nominees = () => {
     
     return (
         <div className="Nominees">
-            <div className="wrapper">
-                <h2>Nominees:</h2>
+            <div className="wrapper" className={nominations.length >= 5 ? "Nominees__div-wrapper--selected" : null}>
+                <h2 className={ nominations.length >= 5 ? "Nominees__h2-banner--selected" : null} >Nominees:</h2>
                 <ul>
                     {displayNominations()}
                 </ul>

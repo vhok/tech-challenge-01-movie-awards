@@ -10,21 +10,6 @@ class SearchResults extends Component {
         }
     }
 
-    displayMovies(movies) {
-        return movies.map( (movie) => {
-            return (
-            <li key={movie.imdbID}>
-                <h2>{movie.Title}</h2>
-                <h3>{movie.Year}</h3>
-                <div>
-                    <img src={movie.Poster} alt={`movie poster of ${movie.Title}`}/>
-                </div>
-                    <button id={movie.imdbID} onClick={ (event) => {this.handleAddNominee(event)}}>Nominate</button>
-            </li>
-            );
-        });
-    }
-
     handleAddNominee(event) {
         const dbRef = firebase.database().ref('nominations/' + event.target.id);
         const movieToNominate = this.state.movieList.filter( (movie) => { return movie.imdbID === event.target.id })[0];
@@ -44,7 +29,6 @@ class SearchResults extends Component {
         });
     }
 
-    componentDid
     componentDidUpdate(prevProp, prevState) {
         axios({
             method: 'GET',
@@ -61,6 +45,21 @@ class SearchResults extends Component {
             }
         }).catch( (error) => {
             console.log("Temporary console error message no results.");
+        });
+    }
+
+    displayMovies(movies) {
+        return movies.map((movie) => {
+            return (
+                <li key={movie.imdbID}>
+                    <h2>{movie.Title}</h2>
+                    <h3>{movie.Year}</h3>
+                    <div>
+                        <img src={movie.Poster} alt={`movie poster of ${movie.Title}`} />
+                    </div>
+                    <button id={movie.imdbID} onClick={(event) => { this.handleAddNominee(event) }}>Nominate</button>
+                </li>
+            );
         });
     }
 

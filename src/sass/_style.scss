@@ -21,6 +21,10 @@ footer {
     align-items: center;
 }
 
+button {
+    cursor: pointer;
+}
+
 // ==================== HEADER ====================
 
 header {
@@ -72,14 +76,26 @@ button {
 .Nominees {
     min-height: 600px;
     background-color: #004C3F;
+    padding-top: 20px;
     
+    button {
+        background-color: #004C3F;
+        border: 1px solid #fff;
+    }
+
+    button:hover {
+        background-color: white;
+        color: #004C3F;
+    }
+
     ul {
         display: flex;
 
         li {
             display: flex;
             flex-direction: column;
-            margin-right: 25px;
+            align-items: center;
+            margin: 7px;
         }
 
         div {
@@ -89,17 +105,42 @@ button {
         img {
             width: auto;
         }
+
+        h2 {
+            width: 200px;
+            flex-grow: 1;
+        }
     }
 
     h2 {
         text-align: center;
-        flex-grow: 1;
-        margin-bottom: 25px;
+        padding-bottom: 20px;
     }
+}
+
+.Nominees__h2-banner--selected {
+    background-color: goldenrod;
+}
+
+.Nominees__div-img--selected,
+.Nominees__div-wrapper--selected {
+    border: 2px solid goldenrod;
+}
+
+.Nominees__div-wrapper--selected {
+    border-radius: 10px;
 }
 
 .SearchResults {
     padding: 50px 0;
+
+    button {
+        box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+        background-color: #004c3f;
+    }
 
     ul {
         display: flex;
