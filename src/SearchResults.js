@@ -19,19 +19,25 @@ class SearchResults extends Component {
                 <div>
                     <img src={movie.Poster} alt={`movie poster of ${movie.Title}`}/>
                 </div>
-                <button>Nominate</button>
+                    <button id={movie.imdbID} onClick={this.handleAddNominee}>Nominate</button>
             </li>
             );
         });
     }
 
+    handleAddNominee(event) {
+        console.log(event.target.id);
+    }
+
     componentDidMount() {
-        const dbRef = firebase.database().ref();
+        const dbRef = firebase.database().ref('resultsMovie');
 
         dbRef.on('value', (response) => {
-            this.setState({
-                movieList: response.val().movieData
-            });
+            if (response.val()) {
+                this.setState({
+                    movieList: response.val().movieData
+                });
+            }
         });
     }
 
@@ -46,7 +52,7 @@ class SearchResults extends Component {
             }
         }).then((response) => {
             if(prevState.movieList === this.state.movieList) {
-                const dbRef = firebase.database().ref();
+                const dbRef = firebase.database().ref('resultsMovie');
 
                 dbRef.set({movieData: response.data.Search});
             }

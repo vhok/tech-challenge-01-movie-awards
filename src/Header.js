@@ -23,7 +23,7 @@ const Header = (props) => {
                         <h2>Search for your nominees 📽️🏆</h2>
                         <form onSubmit={handleSearch}>
                             <label htmlFor="search">Movie title: </label>
-                            <input type="text" id="search" onChange={handleChange}/>
+                            <input type="text" id="search" onChange={handleChange} value={movieTitle}/>
                             <button type="submit" id="submit">Search</button>
                         </form>
                     </div>
