@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/tech-challenge-01-movie-awards/static/css/main.0df29419.chunk.css",
+    "main.js": "/tech-challenge-01-movie-awards/static/js/main.99f7de49.chunk.js",
+    "main.js.map": "/tech-challenge-01-movie-awards/static/js/main.99f7de49.chunk.js.map",
+    "runtime-main.js": "/tech-challenge-01-movie-awards/static/js/runtime-main.01eabdf6.js",
+    "runtime-main.js.map": "/tech-challenge-01-movie-awards/static/js/runtime-main.01eabdf6.js.map",
+    "static/js/2.77053cd9.chunk.js": "/tech-challenge-01-movie-awards/static/js/2.77053cd9.chunk.js",
+    "static/js/2.77053cd9.chunk.js.map": "/tech-challenge-01-movie-awards/static/js/2.77053cd9.chunk.js.map",
+    "static/js/3.0f185334.chunk.js": "/tech-challenge-01-movie-awards/static/js/3.0f185334.chunk.js",
+    "static/js/3.0f185334.chunk.js.map": "/tech-challenge-01-movie-awards/static/js/3.0f185334.chunk.js.map",
+    "index.html": "/tech-challenge-01-movie-awards/index.html",
+    "static/css/main.0df29419.chunk.css.map": "/tech-challenge-01-movie-awards/static/css/main.0df29419.chunk.css.map",
+    "static/js/2.77053cd9.chunk.js.LICENSE.txt": "/tech-challenge-01-movie-awards/static/js/2.77053cd9.chunk.js.LICENSE.txt",
+    "static/media/action.795e1d73.png": "/tech-challenge-01-movie-awards/static/media/action.795e1d73.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.01eabdf6.js",
+    "static/js/2.77053cd9.chunk.js",
+    "static/css/main.0df29419.chunk.css",
+    "static/js/main.99f7de49.chunk.js"
+  ]
+}
