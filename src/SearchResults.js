@@ -8,8 +8,7 @@ class SearchResults extends Component {
         super();
         this.state = {
             movieList: [],
-            isNominationsMaxed: false,
-            isResults: true
+            isNominationsMaxed: false
         }
     }
 
@@ -25,15 +24,16 @@ class SearchResults extends Component {
 
         dbRef.on('value', (response) => {
             let movies = [];
-            let maxed = false;
-
+            let maxed = this.state.isNominationsMaxed;
+            
             if(response.val()['searchResults']) {
                 movies = response.val()['searchResults'].movieData;
-
             }
             
-            if(response.val()['nominations'] && Object.keys(response.val()['nominations']).length >= 5 ) {
+            if(response.val()['nominations'] && Object.keys(response.val()['nominations']).length >= 5) {
                 maxed = true;
+            } else {
+                maxed = false;
             }
 
             this.setState({
@@ -41,8 +41,6 @@ class SearchResults extends Component {
                 isNominationsMaxed: maxed
             });
         });
-
-
     }
 
     componentDidUpdate(prevProp, prevState) {
@@ -54,14 +52,14 @@ class SearchResults extends Component {
                 s: `${this.props.movieTitle}`,
             }
         }).then((response) => {
-            if(prevState.movieList === this.state.movieList) {
-                const dbRef = firebase.database().ref('searchResults');
+            const dbRef = firebase.database().ref('searchResults');
 
-                dbRef.set({movieData: response.data.Search});
-            }
-        }).catch( (error) => {
-            console.log("Temporary console error message no results.");
+            dbRef.set({ movieData: response.data.Search });
+        }).catch((error) => {
+
         });
+
+        
     }
 
     displayMovies(movies) {

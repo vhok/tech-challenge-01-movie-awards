@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import firebase from './firebase';
+import action from './assets/action.png';
 
 const Header = (props) => {
     const [movieTitle, setMovieTitle] = useState('');
@@ -29,7 +29,7 @@ const Header = (props) => {
                         </form>
                     </div>
                     <div className="header__div-img-banner">
-                        <img src="https://placebear.com/g/800/300" alt="Banner"/>
+                        <img src={action} alt="Banner"/>
                     </div>
                 </div>
             </div>

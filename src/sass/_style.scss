@@ -38,6 +38,8 @@ header {
 
 .header__div-container {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
     .header__div-search {
         width: 50%;
@@ -51,7 +53,7 @@ header {
     }
 
     .header__div-img-banner {
-        width: 50%;
+        max-width: 200px;
     }
 }
 
@@ -91,6 +93,7 @@ button {
 
     ul {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
 
         li {
@@ -102,6 +105,7 @@ button {
 
         div {
             height: 350px;
+            box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
         }
 
         img {
@@ -132,6 +136,7 @@ button {
 
 .Nominees__div-wrapper--selected {
     border-radius: 10px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
 }
 
 .SearchResults {
@@ -147,12 +152,13 @@ button {
 
     button:disabled {
         background-color: #004c3f7f;
+        cursor: inherit;
     }
 
     ul {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
 
         li {
             display: flex;
@@ -168,6 +174,7 @@ button {
 
         div {
             height: 350px;
+            box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
         }
 
         img {
