@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tech-challenge-01-movie-awards/static/css/main.0df29419.chunk.css",
-    "main.js": "/tech-challenge-01-movie-awards/static/js/main.99f7de49.chunk.js",
-    "main.js.map": "/tech-challenge-01-movie-awards/static/js/main.99f7de49.chunk.js.map",
+    "main.js": "/tech-challenge-01-movie-awards/static/js/main.09746eaa.chunk.js",
+    "main.js.map": "/tech-challenge-01-movie-awards/static/js/main.09746eaa.chunk.js.map",
     "runtime-main.js": "/tech-challenge-01-movie-awards/static/js/runtime-main.01eabdf6.js",
     "runtime-main.js.map": "/tech-challenge-01-movie-awards/static/js/runtime-main.01eabdf6.js.map",
     "static/js/2.77053cd9.chunk.js": "/tech-challenge-01-movie-awards/static/js/2.77053cd9.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.01eabdf6.js",
     "static/js/2.77053cd9.chunk.js",
     "static/css/main.0df29419.chunk.css",
-    "static/js/main.99f7de49.chunk.js"
+    "static/js/main.09746eaa.chunk.js"
   ]
 }
