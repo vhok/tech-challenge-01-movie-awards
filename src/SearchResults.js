@@ -12,6 +12,7 @@ class SearchResults extends Component {
         }
     }
 
+    // Adds a nominee to the nominations list in Firebase.
     handleAddNominee(event) {
         const dbRef = firebase.database().ref('nominations/' + event.target.id);
         const movieToNominate = this.state.movieList.filter( (movie) => { return movie.imdbID === event.target.id })[0];
@@ -22,6 +23,7 @@ class SearchResults extends Component {
     componentDidMount() {
         const dbRef = firebase.database().ref();
 
+        // Detects changes in Firebase data, and on trigger updates the state variables which in turn triggers the components to re-render on the screen.
         dbRef.on('value', (response) => {
             let movies = [];
             let maxed = this.state.isNominationsMaxed;
@@ -43,10 +45,11 @@ class SearchResults extends Component {
         });
     }
 
-    componentDidUpdate(prevProp, prevState) {
+    componentDidUpdate() {
+        // Makes an API call to OMDB API and if successful, will update the database to contain the results.
         axios({
             method: 'GET',
-            url: `http://www.omdbapi.com/?apikey=9d866534`,
+            url: `https://www.omdbapi.com/?apikey=9d866534`,
             responseType: 'json',
             params: {
                 s: `${this.props.movieTitle}`,

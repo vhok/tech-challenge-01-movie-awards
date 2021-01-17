@@ -8,6 +8,7 @@ const Nominees = () => {
     useEffect(() => {
         const dbRef = firebase.database().ref('nominations');
 
+        // On data change, this sets the state for nominations list to trigger re-render.
         dbRef.on('value', (response) => {
             const currentNominations = [];
 
@@ -20,6 +21,7 @@ const Nominees = () => {
         
     }, []);
 
+    // An event handler for removing nominations from firebase by their ID.
     const handleRemove = (event) => {
         const dbRef = firebase.database().ref('nominations');
 

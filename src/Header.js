@@ -4,11 +4,13 @@ import action from './assets/action.png';
 const Header = (props) => {
     const [movieTitle, setMovieTitle] = useState('');
 
+    // Submits the query to SearchResults component
     const handleSearch = (event) => {
         event.preventDefault();
         props.callbackFromApp(movieTitle);
     }
     
+    // Updates the state as user types in their query to search bar.
     const handleChange = (event) => {
         event.preventDefault();
         setMovieTitle([event.target.value]);
